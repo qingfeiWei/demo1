@@ -1,0 +1,8 @@
+server:
+  port: 8001
+spring:
+  datasource:
+    url: #url
+    username:   #用户名
+    password:   #密码
+    driver-class-name:   #数据库链接驱动
