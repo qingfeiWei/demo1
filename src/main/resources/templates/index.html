@@ -3,8 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>hello</title>
+    <script type="text/javascript" src="../vue/vue.js"></script>
 </head>
 <body>
-你好！初学者，我是SpringBoot的简单启动页面！
+<div id="app">
+    {{ message }}
+</div>
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!'
+        }
+    });
+
+</script>
 </body>
+
 </html>
