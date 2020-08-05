@@ -4,18 +4,44 @@
     <meta charset="UTF-8">
     <title>hello</title>
     <script type="text/javascript" src="../vue/vue.js"></script>
+    <script type="text/javascript" src="../jquery-3.5.1.js"></script>
 </head>
 <body>
-<div id="app">
-    {{ message }}
-</div>
+<ul >
+    <li v-for="(value, key, index) in units" :key="key" >
+        <h4>{{key}}
+            <span v-if="index == 0">（按字母排序）</span>
+        </h4>
+        <ul >
+            <li v-for="item in value" :key="item.id">{{item.name}}</li>
+        </ul>
+
+    </li>
+</ul>
 <script type="text/javascript">
+    var unit;
     var app = new Vue({
-        el: '#app',
         data: {
-            message: 'Hello Vue!'
+            units: unit
         }
     });
+
+    $(function () {
+        $.ajax({
+            type: 'post',
+            url: "unit/list",//url
+            dataType:"json",
+            success: function (result) {
+                console.log(result);
+                unit=result;
+            },
+            error: function () {
+                layer.alert("异常！");
+            }
+        });
+    })
+
+
 
 </script>
 </body>
